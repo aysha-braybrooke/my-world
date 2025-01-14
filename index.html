@@ -1,18 +1,24 @@
 <html>
-  <head>
-    <title>
-        AYSHA
-    </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ 
+<head>
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-  </head>
-  <body>
+</head>
+ 
+<body>
     <a-scene>
-      <a-box position="0 0 0" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1 0" radius="0.5" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="0 2 0" rotation="90 45 0" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 -1 0" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-      <a-sky color="#ECECEC"></a-sky> 
+        <a-assets>
+            <img id="texturesphere" src="/assets/sphere-texture.jpg">
+            <img id="textureciel" src="/assets/texture-ciel.jpg">
+            <img id="texturelune" src="/assets/Moon_texture.jpg">
+            <img id="texturesoleil" src="/assets/8k_sun.jpg">
+        </a-assets>
+ 
+        <a-sphere position="0 2 -8" radius="2" color="pink" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"></a-sphere>
+ 
+        <a-entity position="0 2 -8" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear">
+            <a-sphere position="4 0 0" radius="1" src="#texturelune" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"></a-sphere>
+        </a-entity>
+ 
+        <a-sky src="#textureciel" color="#ECECEC"></a-sky>
     </a-scene>
-  </body>
-</html>
+</body>
