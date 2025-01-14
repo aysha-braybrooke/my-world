@@ -5,20 +5,101 @@
 </head>
  
 <body>
-    <a-scene>
+    <a-scene fog="type: exponential; color: #a61158; density: 0.1">
         <a-assets>
-            <img id="texturesphere" src="/assets/sphere-texture.jpg">
-            <img id="textureciel" src="/assets/texture-ciel.jpg">
-            <img id="texturelune" src="/assets/Moon_texture.jpg">
-            <img id="texturesoleil" src="/assets/8k_sun.jpg">
+
+            <a-asset-item id="pc"  src="/assets/pc.glb"></a-asset-item>
+            <a-asset-item id="table"  src="/assets/desk.glb"></a-asset-item>
+            <a-asset-item id="palmtree"  src="/assets/palmtree.glb"></a-asset-item>
+            <a-asset-item id="fan"  src="/assets/fan.glb"></a-asset-item>
+            <a-asset-item id="plant"  src="/assets/plant.glb"></a-asset-item>
+            <a-asset-item id="plant2"  src="/assets/plant2.glb"></a-asset-item>
+            <a-asset-item id="phone"  src="/assets/phone.glb"></a-asset-item>
+            <a-asset-item id="soda"  src="/assets/soda.glb"></a-asset-item>
+                
+
         </a-assets>
+
  
-        <a-sphere position="0 2 -8" radius="2" color="pink" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"></a-sphere>
- 
-        <a-entity position="0 2 -8" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear">
-            <a-sphere position="4 0 0" radius="1" src="#texturelune" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"></a-sphere>
+
+<!-- PALMTREE!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+        <a-entity position="2 -2 -8" scale="1 1 1" gltf-model="#palmtree">
         </a-entity>
+
+        <a-entity position="-5 -5 -6" scale="1 1 1" rotation="0 20 0" gltf-model="#palmtree">
+        </a-entity>
+
+
+<!-- PLANT!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+        <a-entity position="4.5 -2 -7" scale="0.7 0.7 0.7" gltf-model="#plant">
+        </a-entity>
+
+        
+        
+        <!-- PLANT 2 !!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+        <a-entity position="-2 -2 -8" scale="0.7 1 0.7" gltf-model="#plant2">
+        </a-entity>
+        
+
+<!-- PHONE!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                <a-entity position="2.5 0 -2.5" scale="0.02 0.02 0.02" rotation="0 -155 0"gltf-model="#phone">
+                </a-entity>
+        
+<!-- PC!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+        <a-entity position="0 0 -5" scale="0.5 0.5 0.5" gltf-model="#pc">
+        </a-entity>
+
+<!-- DESK!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+        <a-entity position="0 -2 -5" scale="5 2 4" rotation="0 -90 0" gltf-model="#table">
+        </a-entity>
+
+<!-- SODA!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+        <a-entity position="3 1 -6 " scale="0.7 0.7 0.7 " rotation="0 0 0" gltf-model="#soda">
+        </a-entity>
+
+
+<!-- FAN!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<a-entity position="0 7 -5" scale="3.5 3.5 3.5" gltf-model="#fan"
+animation="property: rotation; to: 0 360 0; loop: true; dur: 4000; easing: linear">
+</a-entity>
+
+<!-- Plane acting as a light source (emissive) -->
+<a-plane position="0 1.4 -5.8" rotation="0 0 0" width="2.4" height="1.7"
+material="color: #ffcc00; emissive: #ffcc00; emissiveIntensity: 1.5"></a-plane>
+
+<a-light type="point" color="#ffcc00" intensity="3" position="0 1.4 -5.8" 
+angle="20" penumbra="0.5" distance="3.5"></a-light>
+
+
+
+
+<!-- Plane acting as a light source (emissive) -->
+<a-plane position="2.5 0.06 -2.5" rotation="-90 25 0" width="0.8" height="0.5"
+material="color: #ffcc00; emissive: #ffcc00; emissiveIntensity: 1.5"></a-plane>
+
+<a-light type="point" color="#ffcc00" intensity="0.5" position="2.5 0.06 -2.5" 
+angle="5" penumbra="1" distance="1"></a-light>
+
+
+
+
+<a-circle position="-2.48z 2.17 -3.54" radius="0.1" material="color: #ffcc00; emissive: #ffcc00; emissiveIntensity: 1.5"></a-circle>
+
+<a-light type="spot" color="#ffcc00" intensity="1" position="-2.45 2.17 -3.54" 
+angle="90" penumbra="0.5" distance="1"></a-light>
+
+
+<a-entity geometry="primitive: box; width: 12; height: 12; depth: 1" position="0 -2.6 -5" rotation="-90 0 0"></a-entity>
+
+
+        <!-- <a-plane height="10" width="15" rotation="-90 0 0" position="0 -2 -5"></a-plane> -->
+
+        <!-- <a-entity light="type: point; intensity:10; distance: 50; decay: 2"
+        position="0 4.2 -3"></a-entity> -->
+
+        <a-entity light="type: ambient; color: #3b0730"></a-entity>
  
-        <a-sky src="#textureciel" color="#ECECEC"></a-sky>
+        <a-sky src="#textureciel" color="#3b0730"></a-sky>
     </a-scene>
+    
 </body>
