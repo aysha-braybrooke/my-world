@@ -29,6 +29,8 @@
       jpg"></a-asset-item>
       <img id="snowy-forest" src="./assets/snowy-forest.jpg"></img>
       <a-asset-item id="lion" src="./assets/lion.glb"></a-asset-item>
+      <a-asset-item id="armoire" src="./assets/armoire.glb"></a-asset-item>
+      <audio id="backgroundMusic" src="./assets/"></audio>
 
     </a-assets>
                     <!-- LA SCENE OUT ----------------------------->
@@ -43,7 +45,7 @@
 
                     <!-- snow -->
                     <a-entity id="snow"
-      particle-system="preset: snow; color: #fffff; particleCount: 5000; size:0.5; "></a-entity>
+      particle-system="preset: snow; color: #ffffff; particleCount: 5000; size:0.5; "></a-entity>
 
                     <!-- lampadaire -->
                     <a-entity position="0 0.868 -25" scale="3 3 3" gltf-model="#lampe">
@@ -107,7 +109,7 @@
 
 
     <!-- SCENE ARMOIRE -->
-    <a-entity id="armoire" position="1.190 0.868 -8.760" scale="1.1 1.1 1.1" gltf-model="#armoire"
+    <a-entity position="1.190 0.868 -8.760" scale="1.1 1.1 1.1" gltf-model="#armoire"
       animation-mixer="clip: *; loop: once; clampWhenFinished: true;">
     </a-entity>
 
