@@ -19,7 +19,7 @@
 
 <body>
           <a-scene fog="type: exponential; color: #5D7C7F; density: 0.05">
-    
+
     <!-- ASSETS ------------------------------>
                     <a-assets>
 
@@ -31,6 +31,8 @@
       <a-asset-item id="lion" src="./assets/lion.glb"></a-asset-item>
       <a-asset-item id="coat1" src="./assets/coat1.glb"></a-asset-item>
       <a-asset-item id="armoire" src="./assets/armoire.glb"></a-asset-item>
+      <a-asset-item id="door" src="./assets/wooden_door.glb"></a-asset-item>
+      <a-asset-item id="house" src="./assets/house.glb"></a-asset-item>
       <audio id="backgroundMusic" src="./assets/"></audio>
 
     </a-assets>
@@ -68,28 +70,28 @@
 
     <!-- tree 5 -->
     <a-entity position="7 -4.931 -33" scale="0.5 0.5 0.5" gltf-model="#tree"></a-entity>
-    
+
     <!-- tree 6 -->
     <a-entity position="9 -4.8 -29" scale="0.5 0.5 0.5" gltf-model="#tree"></a-entity>
 
-        <!-- tree 7 -->
-        <a-entity position="12 -4.931 -22" scale="0.6 0.6 0.6" gltf-model="#tree">
-                        </a-entity>
-
-    
-        <!-- tree 8 -->
-        <a-entity position="-12 -4.931 -19" scale="0.6 0.6 0.6" gltf-model="#tree">
-                        </a-entity>
+    <!-- tree 7 -->
+    <a-entity position="12 -4.931 -22" scale="0.6 0.6 0.6" gltf-model="#tree">
+                      </a-entity>
 
 
-        <!-- lion! -->
-        <a-entity position="-6 -2 -29" scale="0.1 0.1 0.1" gltf-model="#lion" rotation="0 -60 0"
-        animation-mixer="clip: *; loop: repeat; ">
-      </a-entity>
-    
+    <!-- tree 8 -->
+    <a-entity position="-12 -4.931 -19" scale="0.6 0.6 0.6" gltf-model="#tree">
+                      </a-entity>
+
+
+    <!-- lion! -->
+    <a-entity position="-6 -2 -29" scale="0.1 0.1 0.1" gltf-model="#lion" rotation="0 -60 0"
+      animation-mixer="clip: *; loop: repeat; ">
+    </a-entity>
+
 
     <!-- floor -->
-    <a-entity geometry="primitive: box; width: 30; height: 50; depth: 1" position="0 -2.6 -9" rotation="-90 0 0"
+    <a-entity geometry="primitive: box; width: 30; height: 30; depth: 1" position="0 -2.6 -15" rotation="-90 0 0"
       material="src: #sow-map; repeat: 4 4; color: #ffffff;">
     </a-entity>
 
@@ -110,54 +112,81 @@
 
 
     <!-- SCENE ARMOIRE -->
-    <a-entity position="1.190 0.868 -8.760" scale="1.1 1.1 1.1" gltf-model="#armoire"
-      animation-mixer="clip: *; loop: once; clampWhenFinished: true;">
+    <a-entity id="armoire" class="clickable" position="-1 -2.12 -8" scale="3.5 3 3.5" rotation="0 -88.450 0" gltf-model="#armoire">
     </a-entity>
 
-        <!-- mur gauche devant -->
-    <a-entity geometry="primitive: box; width: 13; height: 30; depth: 0.2" position="8.8 0.06 -8.760" rotation="0 0 0"
-      material="src: #sow-map; repeat: 4 4; color: #444A4E;">
+    <a-entity id="door" class="clickable" position="2 -2.12 -6" scale="3.5 3 3.5" rotation="0 -80 0" gltf-model="#door">
     </a-entity>
+    
+    <!-- Script pour gérer le clic -->
+    <script>
+      AFRAME.registerComponent('armoire-click-handler', {
+        init: function () {
+          const armoire = this.el;
+    
+          // Ajoute un événement "click" pour déclencher l'animation
+          armoire.addEventListener('click', (event) => {
+    event.preventDefault(); // Si nécessaire
+    console.log('Clic détecté sur l\'armoire');
+    armoire.setAttribute('animation-mixer', {
+        clip: '*',
+        loop: 'once',
+        clampWhenFinished: true
+    });
+    console.log('Animation déclenchée');
+}, { passive: false });
+        }
+      });
+    
+      // Applique le composant à l'armoire
+      document.querySelector('#armoire').setAttribute('armoire-click-handler', '');
+    </script>
 
 
     <!-- coat1 -->
     <a-entity position="-1.190 0.2 -8.0" scale="4 4 4" rotation="0 0 0" gltf-model="#coat1">
-                    </a-entity>
-
-<!-- mur droit devant -->
-    <a-entity geometry="primitive: box; width: 13; height: 30; depth: 0.2" position="-10 0.06 -8.760" rotation="0 0 0"
-    material="src: #sow-map; repeat: 4 4; color: #444A4E;">
-  </a-entity>
+                      </a-entity>
 
 
 
-<!-- mur haut devant -->
-    <a-plane position="0 10 -8.760" rotation="0 0 0" width="20" height="10"  material="color: #444A4E"></a-plane>
-    <a-entity geometry="primitive: box; width: 13; height: 10; depth: 0.2" position="0 10 -8.760" rotation="0 0 0"
-    material="src: #sow-map; repeat: 4 4; color: #444A4E;">
-  </a-entity>
 
-<!-- mur droite -->
-  <a-entity geometry="primitive: box; width: 20; height: 30; depth: 0.2" position="12 0.06 1.2" rotation="0 90 0"
-  material="src: #sow-map; repeat: 4 4; color: #444A4E;">
-</a-entity>
+
+
+
+
+<!-- INTERIEUR -->
+     <a-entity position="-0.19 4.67 9" scale="4 4 4 " rotation="0 30 0" gltf-model="#house"></a-entity>
+
+
+
     
-    <a-plane id="mur" position="-12 0.06 0" rotation="0 90 0" width="20" height="30"  material="color: #444A4E"></a-plane>
-    <a-plane position="0 0 10" rotation="180 0 0" width="30" height="30"  material="color: #444A4E"></a-plane>
-    
-    <a-entity geometry="primitive: box; width: 30; height: 35; depth: 1" position="0 10 9" rotation="-90 0 0"
-      material="src: #sow-map; repeat: 4 4; color: #444A4E;">
+
+    <a-entity position="-0.768 7.376 -1.588" light="type: spot; angle: 25; intensity: 0.1"
+      rotation="-75 0 0"></a-entity>
+
+
+
+
+    <!-- CONTROLS -->
+    <a-entity id="rig" movement-controls position="1 0 1">
+      <a-entity
+        camera
+        position="-10 1.6 0"
+        look-controls="pointerLockEnabled: true"
+        cursor="rayOrigin: mouse"
+      >
+      </a-entity>
+      <a-entity
+        oculus-touch-controls="hand: left"
+        laser-controls="hand: left"
+        raycaster="objects: .clickable; far: 10; showLine: true"
+      ></a-entity>
+      <a-entity
+        oculus-touch-controls="hand: right"
+        laser-controls="hand: right"
+        raycaster="objects: .clickable; far: 10; showLine: true"
+      ></a-entity>
     </a-entity>
-
-    <a-entity position="-0.768 7.376 -1.588" light="type: spot; angle: 25; intensity: 0.1" rotation="-75 0 0"></a-entity>
-
-
-<!-- CONTROLS -->
-    <a-entity oculus-touch-controls="hand: left" laser-controls="hand: left"
-    raycaster="objects: .clickable; far: 10; showLine: true"></a-entity>
-    <a-entity oculus-touch-controls="hand: right" laser-controls="hand: right"
-    raycaster="objects: .clickable; far: 10; showLine: true"></a-entity>
-
     <a-sky src="#snowy-forest"></a-sky>
   </a-scene>
 
